@@ -5,12 +5,11 @@ import { Switch, Route, withRouter, Redirect } from 'react-router';
 import $ from 'jquery';
 import Hammer from 'rc-hammerjs';
 
-import DashboardAnalytics from '../../pages/analytics'; 
+import DashboardAnalytics from '../../pages/analytics';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import Chat from '../Chat';
-import Helper from '../Helper';
 import { openSidebar, closeSidebar, changeActiveSidebarItem, toggleSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
 
@@ -93,7 +92,6 @@ class Layout extends React.Component {
         <div className={s.wrap}>
           <Header chatToggle={this.chatToggle} />
           <Chat chatOpen={this.state.chatOpen} />
-          <Helper />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
               <Switch>

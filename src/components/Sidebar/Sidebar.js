@@ -7,6 +7,9 @@ import { dismissAlert } from '../../actions/alerts';
 import s from './Sidebar.module.scss';
 import LinksGroup from './LinksGroup/LinksGroup';
 
+import flatlogicLogo from '../../images/flatlogic.png';
+import cubejsLogo from '../../images/cubejs.svg';
+
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../../actions/navigation';
 import isScreen from '../../core/screenHelper';
 import { logoutUser } from '../../actions/user';
@@ -124,6 +127,10 @@ class Sidebar extends React.Component {
               <small>{alert.footer}</small>
             </Alert>,
           )}
+        </div>
+        <div className={s.sidebarLogos}>
+          <a href="https://statsbot.co/cubejs/" target="_blank"><img src={cubejsLogo} alt="cubejs" /></a>
+            <a href="https://flatlogic.com/" target="_blank"><img src={flatlogicLogo} alt="flatlogic" /></a>
         </div>
       </nav >
     );

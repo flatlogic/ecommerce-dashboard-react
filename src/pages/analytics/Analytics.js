@@ -44,11 +44,12 @@ class Analytics extends Component {
     const cubejsApi = cubejs('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjo0MDEzN30.8Slfo_q1LUFAflOoLksmtNxT0MnrwKkf3SX1N6d77Rw');
     return (
       <Row>
+        <Col md={12}><h1 className="mb-lg">React E-Commerce Dashboard built with Cube.js</h1></Col>
         <Col md={6}>
           <Row>
             <Col md={6}>
-            
-              <QueryRenderer 
+
+              <QueryRenderer
                 query={{
                   "measures": [
                     "Orders.completedCount"
@@ -60,8 +61,8 @@ class Analytics extends Component {
                       "granularity": "day"
                     }
                   ]
-                }} 
-                cubejsApi={cubejsApi} 
+                }}
+                cubejsApi={cubejsApi}
                 render={({ resultSet }) => {
                   if (!resultSet) {
                     return 'Loading...';
@@ -88,8 +89,8 @@ class Analytics extends Component {
               />
           </Col>
           <Col md={6}>
-          
-              <QueryRenderer 
+
+              <QueryRenderer
                 query={{
                   "measures": [
                     "Orders.completedPercentage"
@@ -101,8 +102,8 @@ class Analytics extends Component {
                       "granularity": "day"
                     }
                   ]
-                }} 
-                cubejsApi={cubejsApi} 
+                }}
+                cubejsApi={cubejsApi}
                 render={({ resultSet }) => {
                   if (!resultSet) {
                     return 'Loading...';
@@ -131,7 +132,7 @@ class Analytics extends Component {
             </Col>
             <Col md={12}>
             <Widget title={ <h5>Total Amount</h5> }>
-              <QueryRenderer 
+              <QueryRenderer
                 query={{
                   "measures": [
                     "Orders.totalAmount"
@@ -143,8 +144,8 @@ class Analytics extends Component {
                       "granularity": "day"
                     }
                   ]
-                }} 
-                cubejsApi={cubejsApi} 
+                }}
+                cubejsApi={cubejsApi}
                 render={({ resultSet }) => {
                   if (!resultSet) {
                     return 'Loading...';
@@ -155,7 +156,7 @@ class Analytics extends Component {
                       <LineChart data={
                         resultSet.rawData().map(item => {
                           item["Orders.completedAt"] = moment(item["Orders.completedAt"]).format('DD-MM')
-                          
+
                           if (!item["Orders.totalAmount"]) {
                             item["Orders.totalAmount"] = 0;
                           }
@@ -176,7 +177,7 @@ class Analytics extends Component {
         </Col>
         <Col md={6}>
           <Widget title="Total Revenue">
-            <QueryRenderer 
+            <QueryRenderer
               query={{
                 "measures": [
                   "LineItems.totalAmount"
@@ -188,13 +189,13 @@ class Analytics extends Component {
                     "granularity": "day"
                   }
                 ]
-              }} 
-              cubejsApi={cubejsApi} 
+              }}
+              cubejsApi={cubejsApi}
               render={({ resultSet }) => {
                 if (!resultSet) {
                   return 'Loading...';
                 }
-              
+
                 return (
                   <div>
                     <ResponsiveContainer width="100%" height={445}>
@@ -215,7 +216,7 @@ class Analytics extends Component {
           </Widget>
         </Col>
         <Col md={12}>
-          <QueryRenderer 
+          <QueryRenderer
             query={{
               "dimensions": [
                 "Orders.id",
@@ -231,8 +232,8 @@ class Analytics extends Component {
                   "granularity": null
                 }
               ]
-            }} 
-            cubejsApi={cubejsApi} 
+            }}
+            cubejsApi={cubejsApi}
             render={({ resultSet }) => {
               if (!resultSet) {
                 return 'Loading...';
@@ -251,7 +252,7 @@ class Analytics extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {resultSet.rawData().slice(0, 10).reverse().map((item, index) => 
+                      {resultSet.rawData().slice(0, 10).reverse().map((item, index) =>
                         <tr key={index}>
                           <th scope="row">{item["Orders.id"]}</th>
                           <td>{item["ProductCategories.name"]}</td>
@@ -259,7 +260,7 @@ class Analytics extends Component {
                           <td>${item["LineItems.price"]}.00</td>
                           <td>{item["Orders.status"]}</td>
                         </tr>
-                      )}   
+                      )}
                     </tbody>
                   </Table>
                 </Widget>
