@@ -41,7 +41,7 @@ class Analytics extends Component {
   }
 
   render() {
-    const cubejsApi = cubejs('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjo0MDEzN30.8Slfo_q1LUFAflOoLksmtNxT0MnrwKkf3SX1N6d77Rw');
+    const cubejsApi = cubejs(import.meta.env.VITE_CUBE_TOKEN || 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjo0MDEzN30.8Slfo_q1LUFAflOoLksmtNxT0MnrwKkf3SX1N6d77Rw', {apiUrl: import.meta.env.VITE_CUBE_API_URL || 'https://statsbot.co/cubejs-api/v1'});
     return (
       <Row>
         <Col md={12}><h1 className="mb-lg">React E-Commerce Dashboard built with Cube.js</h1></Col>
@@ -62,8 +62,11 @@ class Analytics extends Component {
                     }
                   ]
                 }}
-                cubejsApi={cubejsApi}
-                render={({ resultSet }) => {
+                cubeApi={cubejsApi}
+                render={({ resultSet, error }) => {
+                  if (error) {
+                    return <div role="alert">Could not load analytics: {error.message}</div>;
+                  }
                   if (!resultSet) {
                     return 'Loading...';
                   }
@@ -103,8 +106,11 @@ class Analytics extends Component {
                     }
                   ]
                 }}
-                cubejsApi={cubejsApi}
-                render={({ resultSet }) => {
+                cubeApi={cubejsApi}
+                render={({ resultSet, error }) => {
+                  if (error) {
+                    return <div role="alert">Could not load analytics: {error.message}</div>;
+                  }
                   if (!resultSet) {
                     return 'Loading...';
                   }
@@ -145,8 +151,11 @@ class Analytics extends Component {
                     }
                   ]
                 }}
-                cubejsApi={cubejsApi}
-                render={({ resultSet }) => {
+                cubeApi={cubejsApi}
+                render={({ resultSet, error }) => {
+                  if (error) {
+                    return <div role="alert">Could not load analytics: {error.message}</div>;
+                  }
                   if (!resultSet) {
                     return 'Loading...';
                   }
@@ -190,8 +199,11 @@ class Analytics extends Component {
                   }
                 ]
               }}
-              cubejsApi={cubejsApi}
-              render={({ resultSet }) => {
+              cubeApi={cubejsApi}
+              render={({ resultSet, error }) => {
+                  if (error) {
+                    return <div role="alert">Could not load analytics: {error.message}</div>;
+                  }
                 if (!resultSet) {
                   return 'Loading...';
                 }
@@ -233,8 +245,11 @@ class Analytics extends Component {
                 }
               ]
             }}
-            cubejsApi={cubejsApi}
-            render={({ resultSet }) => {
+            cubeApi={cubejsApi}
+            render={({ resultSet, error }) => {
+                  if (error) {
+                    return <div role="alert">Could not load analytics: {error.message}</div>;
+                  }
               if (!resultSet) {
                 return 'Loading...';
               }

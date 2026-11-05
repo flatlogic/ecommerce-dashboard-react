@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import jQuery from 'jquery';
 import { UncontrolledTooltip } from 'reactstrap';
-import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
+import 'widgster';
 import s from './Widget.module.scss'; // eslint-disable-line css-modules/no-unused-class
 
 class Widget extends React.Component {

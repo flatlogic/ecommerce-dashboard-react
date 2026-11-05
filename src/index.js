@@ -1,5 +1,4 @@
-import 'expose-loader?jQuery!jquery' // eslint-disable-line
-import 'expose-loader?$!jquery' // eslint-disable-line
+import './browser-globals';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -9,7 +8,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 import reducers from './reducers';
-import * as $ from 'jquery'
+import $ from 'jquery'
 window.jQuery = window.$ = $
 
 const store = createStore(
