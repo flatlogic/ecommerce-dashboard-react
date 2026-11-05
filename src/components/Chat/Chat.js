@@ -4,13 +4,13 @@ import { withRouter } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import $ from 'jquery';
 
-import * as a1 from '../../images/people/a1.jpg';
-import * as a2 from '../../images/people/a2.jpg';
-import * as a3 from '../../images/people/a3.jpg';
-import * as a4 from '../../images/people/a4.jpg';
-import * as a5 from '../../images/people/a5.jpg';
-import * as a6 from '../../images/people/a6.jpg';
-import * as avatar from '../../images/avatar.png';
+import a1 from '../../images/people/a1.jpg';
+import a2 from '../../images/people/a2.jpg';
+import a3 from '../../images/people/a3.jpg';
+import a4 from '../../images/people/a4.jpg';
+import a5 from '../../images/people/a5.jpg';
+import a6 from '../../images/people/a6.jpg';
+import avatar from '../../images/avatar.png';
 
 import s from './Chat.module.scss';
 
